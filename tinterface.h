@@ -24,6 +24,7 @@ public slots:
 
 private:
     Ui::TInterface *ui;
+    static bool fileValidaton(const QString&);
 };
 
 
