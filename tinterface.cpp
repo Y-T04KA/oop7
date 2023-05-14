@@ -4,10 +4,9 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_TInterface.h" resolved
 
-#include <QMessageBox>
-#include <QFile>
-#include <QFileDialog>
 #include "tinterface.h"
+
+#include <utility>
 #include "ui_TInterface.h"
 
 
@@ -22,10 +21,8 @@ void TInterface::getFile() {
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
         QString data = QString::fromStdString(file.readAll().toStdString());
         if (fileValidaton(data)){
-            //calling graph constructor
-            test.setText("проверка пройдена");
-            test.exec();
-        };
+            graphChore(data.split('\n'));
+        }
     } else {
         test.setText("file error");
         test.exec();
@@ -54,8 +51,15 @@ bool TInterface::fileValidaton(const QString& data) {
         }
     }
     return true;
-};
+}
 
 TInterface::~TInterface() {
     delete ui;
+}
+
+void TInterface::graphChore(const QStringList& data) {
+    Graph duke(data);
+    QMessageBox test;
+    test.setText(duke.show(1,1));
+    test.exec();
 }

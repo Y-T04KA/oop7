@@ -6,6 +6,10 @@
 #define OOP7_TINTERFACE_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QFile>
+#include <QFileDialog>
+#include "Graph.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +29,7 @@ public slots:
 private:
     Ui::TInterface *ui;
     static bool fileValidaton(const QString&);
+    void graphChore(const QStringList&);
 };
 
 

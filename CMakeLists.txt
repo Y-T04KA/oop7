@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(oop7 main.cpp tinterface.cpp tinterface.h tinterface.ui)
+add_executable(oop7 main.cpp tinterface.cpp tinterface.h tinterface.ui Graph.cpp Graph.h)
 target_link_libraries(oop7
         Qt::Core
         Qt::Gui
