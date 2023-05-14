@@ -1,36 +1,29 @@
-//
-// Created by kiril on 13.05.2023.
-//
+#pragma once
 
-#ifndef OOP7_TINTERFACE_H
-#define OOP7_TINTERFACE_H
-
-#include <QMainWindow>
-#include <QMessageBox>
+#include <QtWidgets/QMainWindow>
+#include "ui_TInterface.h"
+#include <QPushButton>
+#include <qmessagebox.h>
 #include <QFile>
 #include <QFileDialog>
 #include "Graph.h"
+#include "GraphWidget.h"
 
+class TInterface : public QMainWindow
+{
+    Q_OBJECT
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class TInterface; }
-QT_END_NAMESPACE
-
-class TInterface : public QMainWindow {
-Q_OBJECT
+        
 
 public:
-    explicit TInterface(QWidget *parent = nullptr);
-
-    ~TInterface() override;
+    TInterface(QWidget *parent = nullptr);
+    QPushButton* fileButton;
+    GraphWidget* gw;
+    ~TInterface();
 public slots:
     void getFile();
-
 private:
-    Ui::TInterface *ui;
+    Ui::TInterfaceClass ui;
     static bool fileValidaton(const QString&);
     void graphChore(const QStringList&);
 };
-
-
-#endif //OOP7_TINTERFACE_H
